@@ -1,4 +1,0 @@
-
-
-screen.blit(text_title, text_title_center_point)
-# blit(表示するオブジェクト, オブジェクトの左上の座標)
