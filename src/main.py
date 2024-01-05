@@ -41,6 +41,7 @@ def run_game():
         tuple(Player, list): player, hurdlesを次に実行されるgame_over()に渡すために返す
     """
 
+    print(PLAYER_DEFAULT_POINT.__str__())
     # ゲームオーバーのフラグをセット、False:ゲームオーバーでない。
     is_game_over = False
 
