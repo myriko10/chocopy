@@ -2,7 +2,7 @@ import pygame
 
 IMAGEDICT = {'bird': pygame.image.load('../images/bird.png'),
 			'calrun1': pygame.image.load('../images/callot_horse_run1.png'),
-			'calrun1': pygame.image.load('../images/callot_horse_run2.png'),
+			'calrun2': pygame.image.load('../images/callot_horse_run2.png'),
 			'cloud': pygame.image.load('../images/cloud.png'),
 			'red': pygame.image.load('../images/flower_red.png'),
 	    	'white': pygame.image.load('../images/flower_white.png'),

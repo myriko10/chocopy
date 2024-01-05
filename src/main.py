@@ -55,7 +55,7 @@ def run_game():
     COLLISION_MARGIN = IMAGEDICT['red'].get_width() * 3 # 難易度調整用マージン(係数2と3で大分体感が変わる)
     collision_area = (player.image.get_width() + step_on_frame + COLLISION_MARGIN) / Hurdle.speed
     creatable_frame = jumping_frame - collision_area
-    
+
     # ゲームスタート
     while True:
         # 背景の描画
@@ -65,10 +65,10 @@ def run_game():
             # 押されたキーの状態を判定
             if pressed(K_SPACE) and player.on_ground:
                 player.init_jump()
-        
+
         # プレイヤーの座標を更新
         player.jump()
-        
+
         # プレイヤーの画像を切り替え
         player.switch_image(is_game_over)
 
@@ -102,22 +102,22 @@ def run_game():
                     # 衝突検知：戻り値は衝突していたらTrue、していなかったらFalse
                     is_game_over = is_collision(player.left_top_point, player.right_bottom_point,
                                     h.left_top_point, h.right_bottom_point)
-                    
+       
         # ハードルを描画
         for h in hurdles: 
             screen.blit(h.image, h.left_top_point.get_xy())
-            
+
         # ゲームオーバーなら文字を表示
         if is_game_over:
             break
 
         # プレイヤーの画像を描画
         screen.blit(player.image, player.left_top_point.get_xy())
-        
+
         # スコアを表示
         score.score_update(is_game_over, start_time)
         score.display_score(screen)
-        
+
         # screen.blit(im.IMAGEDICT['stop'], horse_cordi)
 
         # 画面の更新
@@ -128,7 +128,7 @@ def run_game():
         for event in pygame.event.get():
             if event.type == QUIT:
                 terminate()
-                
+    
     return player,hurdles
 
 # 背景を描画する
@@ -155,7 +155,7 @@ def title():
         for event in pygame.event.get():
             if event.type == QUIT:
                 terminate()
-        
+
         # 
         if pressed(None):
             break
