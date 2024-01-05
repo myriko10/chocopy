@@ -14,12 +14,12 @@ import pygame
 from pygame.locals import QUIT, K_SPACE
 # プレイヤーのクラス
 
-# 障害物のクラス
+# ハードル(障害物)のクラス
 
 # スコアのクラス
 
 # 衝突を検知する関数
-
+from hurdle import Hurdle
 # 使用する画像のデータ。辞書型。
 from image_dict import IMAGE_DICT
 # ゲームの設定
@@ -40,8 +40,7 @@ def run_game():
     Returns:
         tuple(Player, list): player, hurdlesを次に実行されるgame_over()に渡すために返す
     """
-
-    print(PLAYER_DEFAULT_POINT.__str__())
+    h = Hurdle()
     # ゲームオーバーのフラグをセット、False:ゲームオーバーでない。
     is_game_over = False
 
