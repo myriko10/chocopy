@@ -40,6 +40,12 @@ def run_game():
     Returns:
         tuple(Player, list): player, hurdlesを次に実行されるgame_over()に渡すために返す
     """
+    # ゲーム開始時の時刻を取得
+    start_time = time.time()
+
+    # スコアクラスを宣言
+    score = Score()
+
     # ゲームオーバーのフラグをセット、False:ゲームオーバーでない。
     is_game_over = False
 
@@ -85,7 +91,7 @@ def run_game():
                 # ゲームオーバーフラグを立てる
                 is_game_over = True
                 # 全ハードルに対するループを抜ける
-                break    
+                break
 
         # ゲームオーバーならrun_game関数を終了する
         if is_game_over:
@@ -94,10 +100,13 @@ def run_game():
         # ハードルを描画
         for h in hurdles:
             screen.blit(h.image, h.left_top_point.get_xy())
+
         # スコアを更新
-        
+        score.update_score(start_time)
+        text.update_score(score.value)
         # スコアを表示
-        
+        screen.blit(text.text_score, text.text_score_center_point)
+
         # プレイヤーの画像を描画
         screen.blit(player.image, player.left_top_point.get_xy())
 
