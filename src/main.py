@@ -17,7 +17,7 @@ from pygame.locals import QUIT, K_SPACE
 # 障害物のクラス
 
 # スコアのクラス
-
+from score import Score
 # 衝突を検知する関数
 
 # 使用する画像のデータ。辞書型。
@@ -40,6 +40,11 @@ def run_game():
     Returns:
         tuple(Player, list): player, hurdlesを次に実行されるgame_over()に渡すために返す
     """
+    # ゲーム開始時の時刻を取得
+    start_time = time.time()
+
+    # スコアクラスを宣言
+    score = Score()
 
     # ゲームオーバーのフラグをセット、False:ゲームオーバーでない。
     is_game_over = False
@@ -60,6 +65,12 @@ def run_game():
         # ゲームオーバーならrun_game関数を終了する
         if is_game_over:
             break
+
+        # スコアを更新
+        score.update_score(start_time)
+        text.update_score(score.value)
+        # スコアを表示
+        screen.blit(text.text_score, text.text_score_center_point)
 
         # 画面の更新
         pygame.display.update()
