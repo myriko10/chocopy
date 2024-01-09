@@ -52,9 +52,12 @@ def run_game():
         draw_background()
         # イベント(マウスの移動やクリック、キー入力など)を検知
         # スペースキーが押された
-        proceed_event_with_key(K_SPACE)
-        #if proceed_event_with_key(K_SPACE) and player.on_ground:
-        # プレイヤーがジャンプの準備をする
+        if proceed_event_with_key(K_SPACE) and player.on_ground:
+            # プレイヤーがジャンプの準備をする
+            player.init_jump()
+
+        # プレイヤーの更新
+        player.update()
 
         # ハードル生成用のアルゴリズムを実行
         # frame_counter += 1
