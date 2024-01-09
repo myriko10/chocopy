@@ -53,7 +53,7 @@ def run_game():
         proceed_event_with_key(K_SPACE)
         #if proceed_event_with_key(K_SPACE) and player.on_ground:
 
-        # ハードルの生成
+        # ハードルの生成用のアルゴリズムを実行
         # frame_counter += 1
         # state, frame_counter = transition_hurdles_state(hurdles, state, frame_counter, creatable_frame, collision_area)
 
