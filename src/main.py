@@ -40,9 +40,11 @@ def run_game():
     Returns:
         tuple(Player, list): player, hurdlesを次に実行されるgame_over()に渡すために返す
     """
-
     # ゲームオーバーのフラグをセット、False:ゲームオーバーでない。
     is_game_over = False
+
+    # Playerをインスタンス化 初期位置の座標を指定
+    player = Player(PLAYER_DEFAULT_POINT)
 
     # ゲームスタート
     while True:
@@ -83,7 +85,8 @@ def run_game():
         # スコアを表示
         
         # プレイヤーの画像を描画
-        
+        screen.blit(player.image, player.left_top_point.get_xy())
+
         # 画面の更新
         pygame.display.update()
         FPSCLOCK.tick_busy_loop(FPS)
