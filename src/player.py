@@ -39,8 +39,10 @@ class Player:
 
         # 重力の定数
         self.GRAVITY = 0.5
+
         # playerの初期状態を「着地している」に設定
         self.on_ground = True
+
         # ジャンプの高さ(負の値にすることで上に移動する)
         self.JUMP_HEIGHT = -(HEIGHT / 38)
 

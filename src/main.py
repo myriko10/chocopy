@@ -13,11 +13,11 @@ import pygame
 # キーイベント判定のために使用する。
 from pygame.locals import QUIT, K_SPACE
 # プレイヤーのクラス
-
+from player import Player
 # ハードル(障害物)のクラス
-
+from hurdle import Hurdle
 # スコアのクラス
-
+from score import Score
 # 衝突を検知する関数
 from hurdle import Hurdle
 # 使用する画像のデータ。辞書型。
@@ -52,18 +52,38 @@ def run_game():
         # スペースキーが押された
         proceed_event_with_key(K_SPACE)
         #if proceed_event_with_key(K_SPACE) and player.on_ground:
+        # プレイヤーがジャンプの準備をする
 
-        # ハードルの生成
+        # ハードル生成用のアルゴリズムを実行
         # frame_counter += 1
         # state, frame_counter = transition_hurdles_state(hurdles, state, frame_counter, creatable_frame, collision_area)
 
-
-      
+        # ハードルリストの要素全てに対してループ
+            
+            # ハードルの座標を更新する
+            
+            # ハードルが画面から消えた場合
+            
+                # ハードルが画面から消えた
+            
+            # 衝突判定：戻り値は衝突していたらTrue、していなかったらFalse
+            
+                # ゲームオーバーフラグを立てる
+                
+                # 全ハードルに対するループを抜ける
 
         # ゲームオーバーならrun_game関数を終了する
         if is_game_over:
             break
+        
+        # ハードルを描画
 
+        # スコアを更新
+        
+        # スコアを表示
+        
+        # プレイヤーの画像を描画
+        
         # 画面の更新
         pygame.display.update()
         FPSCLOCK.tick_busy_loop(FPS)
@@ -175,7 +195,7 @@ def transition_hurdles_state(hurdles, state, frame_counter, creatable_frame, col
 
     状態stateは1->2->3->...と遷移する。初期状態は1
     frame_counterは関数の呼び出し元で毎フレームでカウントアップされるものとする
-    stateは関数の呼び出し元で
+    stateは関数の呼び出し元で保持する
     Args:
         hurdles (_type_): 生成されたハードルのリスト
         state (_type_): ハードル生成を制御するための状態
