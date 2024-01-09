@@ -172,7 +172,7 @@ def transition_hurdles_state(hurdles, state, frame_counter, creatable_frame, col
 
     状態stateは1->2->3->...と遷移する。初期状態は1
     frame_counterは関数の呼び出し元で毎フレームでカウントアップされるものとする
-    stateは関数の呼び出し元で
+    stateは関数の呼び出し元で保持する
     Args:
         hurdles (_type_): 生成されたハードルのリスト
         state (_type_): ハードル生成を制御するための状態
