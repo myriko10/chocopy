@@ -26,14 +26,15 @@ class Player:
 
         # 衝突判定のため、画像右下の座標を設定
 
-        # playerの初期状態を「着地している」に設定
-
         # 以下ジャンプに使用するインスタンス変数----
         # playerのy方向の速度
         self.y_velocity = 0
 
         # 重力の定数
         self.GRAVITY = 0.5
+
+        # playerの初期状態を「着地している」に設定
+        self.on_ground = True
 
         # ジャンプの高さ(負の値にすることで上に移動する)
         self.JUMP_HEIGHT = -(HEIGHT / 38)
