@@ -1,11 +1,11 @@
 """プレイヤーのキャラクターを表すクラスを含むモジュール
 """
 # 当時間間隔でプレイヤーの画像を切り替えるために使用
-# import time
+import time
 # プレイヤー画像のために使用
-# from image_dict import IMAGE_DICT
+from image_dict import IMAGE_DICT
 # 座標を扱うために使用
-# from point import Point
+from point import Point
 # 高さに依存してパラメータを設定するために使用。
 from game_settings import HEIGHT
 
@@ -19,14 +19,19 @@ class Player:
             point (Point): プレイヤーの初期位置。画像の左上の座標。
         """
         # playerの初期画像を設定
+        self.image = IMAGE_DICT['run1']
 
         # playerのデフォルト位置（着地している位置）を設定
+        self.DEFAULT_LEFT_TOP_POINT = Point(*point.get_xy())
 
         # playerの表示用の座標を初期化
+        self.left_top_point = Point(*point.get_xy())
 
         # 衝突判定のため、画像右下の座標を設定
-
-        # playerの初期状態を「着地している」に設定
+        self.right_bottom_point = Point(
+            self.left_top_point.x + self.image.get_width(),
+            self.left_top_point.y + self.image.get_height()
+        )
 
         # 以下ジャンプに使用するインスタンス変数----
         # playerのy方向の速度
@@ -34,7 +39,8 @@ class Player:
 
         # 重力の定数
         self.GRAVITY = 0.5
-
+        # playerの初期状態を「着地している」に設定
+        self.on_ground = True
         # ジャンプの高さ(負の値にすることで上に移動する)
         self.JUMP_HEIGHT = -(HEIGHT / 38)
 

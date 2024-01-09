@@ -40,7 +40,7 @@ def run_game():
     Returns:
         tuple(Player, list): player, hurdlesを次に実行されるgame_over()に渡すために返す
     """
-    h = Hurdle('red')
+
     # ゲームオーバーのフラグをセット、False:ゲームオーバーでない。
     is_game_over = False
 
@@ -58,8 +58,7 @@ def run_game():
         # state, frame_counter = transition_hurdles_state(hurdles, state, frame_counter, creatable_frame, collision_area)
 
 
-        h.move()
-        screen.blit(h.image, h.left_top_point.get_xy())
+      
 
         # ゲームオーバーならrun_game関数を終了する
         if is_game_over:
