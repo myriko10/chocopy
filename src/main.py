@@ -19,7 +19,7 @@ from hurdle import Hurdle
 # スコアのクラス
 from score import Score
 # 衝突を検知する関数
-from hurdle import Hurdle
+from is_collision import is_collision
 # 使用する画像のデータ。辞書型。
 from image_dict import IMAGE_DICT
 # ゲームの設定
@@ -46,6 +46,14 @@ def run_game():
     # Playerをインスタンス化 初期位置の座標を指定
     player = Player(PLAYER_DEFAULT_POINT)
 
+    # ハードルのリストの初期化
+    hurdles = []
+
+    # ハードル生成用アルゴリズムの変数
+    creatable_frame, collision_area = create_state_constants(player)
+    frame_counter = 0
+    state = 1
+
     # ゲームスタート
     while True:
         # 背景の描画
@@ -60,29 +68,32 @@ def run_game():
         player.update()
 
         # ハードル生成用のアルゴリズムを実行
-        # frame_counter += 1
-        # state, frame_counter = transition_hurdles_state(hurdles, state, frame_counter, creatable_frame, collision_area)
+        frame_counter += 1
+        state, frame_counter = transition_hurdles_state(hurdles, state, frame_counter, creatable_frame, collision_area)
 
         # ハードルリストの要素全てに対してループ
-            
+        for h in hurdles.copy():
             # ハードルの座標を更新する
-            
+            h.move()
             # ハードルが画面から消えた場合
-            
+            if h.left_top_point.x + h.width < 0:
                 # ハードルが画面から消えた
-            
+                hurdles.remove(h)
             # 衝突判定：戻り値は衝突していたらTrue、していなかったらFalse
-            
+            if is_collision(player.left_top_point, player.right_bottom_point,
+                                        h.left_top_point, h.right_bottom_point):
                 # ゲームオーバーフラグを立てる
-                
+                is_game_over = True
                 # 全ハードルに対するループを抜ける
+                break    
 
         # ゲームオーバーならrun_game関数を終了する
         if is_game_over:
             break
-        
-        # ハードルを描画
 
+        # ハードルを描画
+        for h in hurdles:
+            screen.blit(h.image, h.left_top_point.get_xy())
         # スコアを更新
         
         # スコアを表示
@@ -95,7 +106,7 @@ def run_game():
         FPSCLOCK.tick_busy_loop(FPS)
 
     # ゲームオーバー関数に渡すため返す
-    # return player, hurdles
+    return player, hurdles
 
 def draw_background():
     """背景を描画する
@@ -190,7 +201,7 @@ def create_hurdle(hurdles):
             pic = 'white'
         else:
             pic = 'mole'
-        hurdles.append(Hurdle(pic, 1))
+        hurdles.append(Hurdle(pic))
         # ハードルが生成されたのでTrueを返す
         return True
     # ハードルが生成されない場合Falseを返す
@@ -297,10 +308,9 @@ def main():
         # タイトル画面を表示する
         display_title()
         # ゲームをスタートする
-        # player, hurdles = 
-        run_game()
+        player, hurdles = run_game()
         # ゲームオーバーの処理を行う
-        # display_game_over(player, hurdles)
+        display_game_over(player, hurdles)
 
 # 「python hoge.py」のようにコマンドで自分が実行されたらモジュールの属性__name__は"__main__"を保持する。
 # 自分が実行されたときだけこのif文が実行される。
