@@ -13,13 +13,13 @@ import pygame
 # キーイベント判定のために使用する。
 from pygame.locals import QUIT, K_SPACE
 # プレイヤーのクラス
-
-# 障害物のクラス
+from player import Player
+# ハードル(障害物)のクラス
 
 # スコアのクラス
 from score import Score
 # 衝突を検知する関数
-
+from is_collision import is_collision
 # 使用する画像のデータ。辞書型。
 from image_dict import IMAGE_DICT
 # ゲームの設定
@@ -49,14 +49,22 @@ def run_game():
     # ゲームオーバーのフラグをセット、False:ゲームオーバーでない。
     is_game_over = False
 
+    # Playerをインスタンス化 初期位置の座標を指定
+    # player = Player(PLAYER_DEFAULT_POINT)
+
     # ゲームスタート
     while True:
         # 背景の描画
         draw_background()
         # イベント(マウスの移動やクリック、キー入力など)を検知
         # スペースキーが押された
-        proceed_event_with_key(K_SPACE)
-        #if proceed_event_with_key(K_SPACE) and player.on_ground:
+        if proceed_event_with_key(K_SPACE) and player.on_ground:
+            # プレイヤーがジャンプの準備をする
+            # player.init_jump()
+            pass
+
+        # プレイヤーの更新
+        # player.update()
 
         # ハードルの生成用のアルゴリズムを実行
         # frame_counter += 1
@@ -71,6 +79,9 @@ def run_game():
         text.update_score(score.value)
         # スコアを表示
         screen.blit(text.text_score, text.text_score_center_point)
+
+        # プレイヤーの画像を表示
+        # screen.blit(player.image, player.left_top_point)
 
         # 画面の更新
         pygame.display.update()
