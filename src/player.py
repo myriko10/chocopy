@@ -5,7 +5,7 @@ import time
 # プレイヤー画像のために使用
 from image_dict import IMAGE_DICT
 # 座標を扱うために使用
-from point import Point
+# from point import Point
 # 高さに依存してパラメータを設定するために使用。
 from game_settings import HEIGHT
 
