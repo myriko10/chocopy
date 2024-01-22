@@ -56,6 +56,7 @@ def run_game():
     while True:
         # 背景の描画
         draw_background()
+
         # イベント(マウスの移動やクリック、キー入力など)を検知
         # スペースキーが押された
         if proceed_event_with_key(K_SPACE) and player.on_ground:
@@ -70,10 +71,21 @@ def run_game():
         # frame_counter += 1
         # state, frame_counter = transition_hurdles_state(hurdles, state, frame_counter, creatable_frame, collision_area)
 
+        # ハードルリストの要素全てに対してループ
+            # ハードルの座標を更新する
+            # ハードルが画面から消えた
+                # ハードルをリストから削除
+            # 衝突判定
+                # ゲームオーバーフラグを立てる
+                # 全ハードルに対するループを抜ける
+
         # ゲームオーバーならrun_game関数を終了する
         if is_game_over:
             break
 
+        # ハードルを描画
+        
+        
         # スコアを更新
         score.update_score(start_time)
         text.update_score(score.value)
