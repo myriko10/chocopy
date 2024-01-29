@@ -15,7 +15,7 @@ from pygame.locals import QUIT, K_SPACE
 # プレイヤーのクラス
 from player import Player
 # ハードル(障害物)のクラス
-
+# from hurdle import Hurdle
 # スコアのクラス
 from score import Score
 # 衝突を検知する関数
@@ -51,6 +51,11 @@ def run_game():
 
     # Playerをインスタンス化 初期位置の座標を指定
     # player = Player(PLAYER_DEFAULT_POINT)
+
+    # ハードル生成用アルゴリズムの変数
+    # creatable_frame, collision_area = create_state_constants(player)
+    # frame_counter = 0
+    # state = 1
 
     # ゲームスタート
     while True:
@@ -93,7 +98,7 @@ def run_game():
         screen.blit(text.text_score, text.text_score_center_point)
 
         # プレイヤーの画像を表示
-        # screen.blit(player.image, player.left_top_point)
+        # screen.blit(player.image, player.left_top_point.get_xy())
 
         # 画面の更新
         pygame.display.update()

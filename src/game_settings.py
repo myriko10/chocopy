@@ -7,7 +7,7 @@
 # ゲーム開発のためのモジュール
 import pygame
 # プレイヤーのデフォルト位置のために使用
-import point
+# from point import Point
 
 # 画面のサイズ
 # 画面の幅ピクセル
@@ -19,5 +19,4 @@ FPS = 30
 # フレームレート制御
 FPSCLOCK = pygame.time.Clock()
 # デフォルトのプレイヤー位置(地上を走るとき)。画像の左上の座標。
-PLAYER_DEFAULT_POINT = point.Point()
-# point.Point(WIDTH * 4/70, HEIGHT * 3/7)
+PLAYER_DEFAULT_POINT = 0 # Point(WIDTH * 4/70, HEIGHT * 3/7)
