@@ -15,7 +15,7 @@ from pygame.locals import QUIT, K_SPACE
 # プレイヤーのクラス
 from player import Player
 # ハードル(障害物)のクラス
-
+# from hurdle import Hurdle
 # スコアのクラス
 from score import Score
 # 衝突を検知する関数
