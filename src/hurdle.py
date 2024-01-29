@@ -6,5 +6,5 @@
 from image_dict import IMAGE_DICT
 # 座標を表現するために使用
 # from point import Point
-# ゲーム画面の幅と高さに依存する定数を
+# ゲーム画面の幅と高さに依存する定数の作成に使用
 from game_settings import WIDTH, HEIGHT
